@@ -1,0 +1,24 @@
+{
+	"name": "machmakingStatus",
+	"plugin-id": "Text",
+	"sid": 128375932024027,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "messageSearching",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 537029274638872
+		},
+		{
+			"name": "messageConnecting",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 537106046308005
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

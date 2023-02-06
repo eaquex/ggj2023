@@ -1,0 +1,14 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 3.2rem;
+}
+
+.gameInput {
+	font-size: 3.2rem;
+	background-color: rgb(10,10,10);
+	color: white;
+	text-align: center;
+}

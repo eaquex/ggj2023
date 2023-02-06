@@ -1,0 +1,552 @@
+{
+	"name": "evGame",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "evRootController"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evRootBodyRepeater"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evUI"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evObstacles"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evNutrient"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evMultiplayer"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 158628465513549
+				}
+			],
+			"actions": [
+				{
+					"id": "set-group-active",
+					"objectClass": "System",
+					"sid": 156565201112679,
+					"parameters": {
+						"group-name": "\"MultiplayerLobby\"",
+						"state": "deactivated"
+					}
+				},
+				{
+					"id": "set-layer-opacity",
+					"objectClass": "System",
+					"sid": 523629376416990,
+					"parameters": {
+						"layer": "\"overlay\"",
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "set-layer-opacity",
+					"objectClass": "System",
+					"sid": 969802466460325,
+					"parameters": {
+						"layer": "\"result\"",
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 297579120582528,
+					"parameters": {
+						"variable": "GameWinnerID",
+						"value": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 352224390429582,
+					"parameters": {
+						"variable": "GameWinnerMaxDistance",
+						"value": "0"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 104298028815482,
+					"parameters": {
+						"audio-file": "Can't Stop Me",
+						"loop": "looping",
+						"volume": "-20",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 715356666364177,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Multiplayer setup"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "sync-object",
+							"objectClass": "Multiplayer",
+							"sid": 826271968514841,
+							"parameters": {
+								"object": "RootHead",
+								"data": "position-and-angle",
+								"precision": "high-double-8-bytes",
+								"bandwidth": "normal-bandwidth-unpredictable"
+							}
+						},
+						{
+							"id": "sync-instance-variable",
+							"objectClass": "Multiplayer",
+							"sid": 360958987043768,
+							"parameters": {
+								"object": "RootHead",
+								"instance-variable": {
+									"name": "distance",
+									"objectClass": "RootHead"
+								},
+								"precision": "normal-float-4-bytes",
+								"interpolation": "none",
+								"client-value-tag": "\"\""
+							}
+						},
+						{
+							"id": "sync-instance-variable",
+							"objectClass": "Multiplayer",
+							"sid": 188903113038226,
+							"parameters": {
+								"object": "RootHead",
+								"instance-variable": {
+									"name": "progress",
+									"objectClass": "RootHead"
+								},
+								"precision": "normal-float-4-bytes",
+								"interpolation": "linear",
+								"client-value-tag": "\"\""
+							}
+						},
+						{
+							"id": "sync-object",
+							"objectClass": "Multiplayer",
+							"sid": 573971613169878,
+							"parameters": {
+								"object": "RootBody",
+								"data": "position-and-angle",
+								"precision": "normal-float-4-bytes",
+								"bandwidth": "very-low-bandwidth-essentially-static"
+							}
+						},
+						{
+							"id": "sync-object",
+							"objectClass": "Multiplayer",
+							"sid": 205452386203102,
+							"parameters": {
+								"object": "ObstacleItem",
+								"data": "position-only",
+								"precision": "normal-float-4-bytes",
+								"bandwidth": "normal-bandwidth-unpredictable"
+							}
+						},
+						{
+							"id": "sync-object",
+							"objectClass": "Multiplayer",
+							"sid": 504940807980193,
+							"parameters": {
+								"object": "NutrientItem",
+								"data": "position-only",
+								"precision": "normal-float-4-bytes",
+								"bandwidth": "normal-bandwidth-unpredictable"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 374369383104890,
+							"parameters": {
+								"variable": "GameState",
+								"value": "\"setup\""
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 930559878157317,
+							"parameters": {
+								"variable": "GameProgress",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 106935950315410,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 637020037500478,
+							"parameters": {
+								"variable": "GamePlayerNextPosition",
+								"value": "0"
+							}
+						}
+					],
+					"sid": 535264104143088
+				},
+				{
+					"eventType": "comment",
+					"text": "Activate the controller for client/host"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 946126621387576
+						}
+					],
+					"actions": [
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 707952930289222,
+							"parameters": {
+								"group-name": "\"MultiplayerHost\"",
+								"state": "activated"
+							}
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 996938644637968,
+							"parameters": {
+								"group-name": "\"MultiplayerClient\"",
+								"state": "deactivated"
+							}
+						}
+					],
+					"sid": 161666075179046,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Create host player (root head)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "RootCreateHead",
+									"sid": 838180907752358,
+									"parameters": [
+										"Multiplayer.MyID",
+										"Multiplayer.MyAlias",
+										"100 + GamePlayerNextPosition*300",
+										"300"
+									]
+								}
+							],
+							"sid": 873026572282340
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 577035508543389
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "NutrientItem",
+							"sid": 775178851025369
+						},
+						{
+							"id": "destroy",
+							"objectClass": "ObstacleItem",
+							"sid": 191781024022852
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 280434865659386,
+							"parameters": {
+								"group-name": "\"MultiplayerHost\"",
+								"state": "deactivated"
+							}
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 775293827731606,
+							"parameters": {
+								"group-name": "\"MultiplayerClient\"",
+								"state": "activated"
+							}
+						}
+					],
+					"sid": 405655165072134,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "From client trigger player creation (root head client)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "send-message",
+									"objectClass": "Multiplayer",
+									"sid": 140935066555033,
+									"parameters": {
+										"peer-id": "\"\"",
+										"tag": "\"create\"",
+										"message": "Multiplayer.MyID",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 425943867079167
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Debug"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 658290497945724
+				}
+			],
+			"actions": [],
+			"sid": 412580810314974,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 849216271305873,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"playing\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Debug",
+							"sid": 543960785812248,
+							"parameters": {
+								"text": "\"\""
+							}
+						}
+					],
+					"sid": 823992616500619,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 860171489038382,
+									"parameters": {
+										"object": "RootHead"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "Debug",
+									"sid": 161975121224954,
+									"parameters": {
+										"text": "Self.Text & \"[\"&GameState&\"] \" & \"UID:\" & RootHead.UID & \"ID:\" & RootHead.ID & \" progress:\" & RootHead.progress & \" scrollx: \" & scrollx & \" scrolly:\" & scrolly & newline"
+									}
+								}
+							],
+							"sid": 880142937140684
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 324707395121506
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Debug",
+							"sid": 936012007409682,
+							"parameters": {
+								"text": "\"GameState:\" & GameState & newline & \"PlayersReady: \" & GamePlayersReady"
+							}
+						}
+					],
+					"sid": 974356271328253
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "SFX Handle only on client"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "RootHead",
+					"sid": 347580821147567,
+					"parameters": {
+						"instance-variable": "ID",
+						"comparison": 0,
+						"value": "Multiplayer.MyID"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 992870002290378,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "RootHead",
+							"sid": 562689860007933,
+							"parameters": {
+								"object": "ObstacleItem"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 397624499253526,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-tag-playing",
+									"objectClass": "Audio",
+									"sid": 922901591554462,
+									"parameters": {
+										"tag": "\"hit\""
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 894140884311503,
+									"parameters": {
+										"audio-file": "Futuristic_Game_Item_5",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"hit\""
+									}
+								}
+							],
+							"sid": 729411733779430
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "RootHead",
+							"sid": 227609780628728,
+							"parameters": {
+								"object": "NutrientItem"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 948563749941157,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-tag-playing",
+									"objectClass": "Audio",
+									"sid": 702967354206359,
+									"parameters": {
+										"tag": "\"nutrient\""
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 872621855133707,
+									"parameters": {
+										"audio-file": "Abstract_Positive_Game_WIn_3",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"nutrient\""
+									}
+								}
+							],
+							"sid": 516209194091584
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 593698204161975
+}

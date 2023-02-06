@@ -1,0 +1,55 @@
+{
+	"name": "evAnimController",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "This is a global object to invoce more easy the tweens"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 989870529672197
+				}
+			],
+			"actions": [],
+			"sid": 667023293375302,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 829124801488399,
+							"parameters": {
+								"first-value": "AnimController.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 206436568032627,
+							"parameters": {
+								"object-to-create": "AnimController",
+								"layer": "0",
+								"x": "0",
+								"y": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 951636432576861
+				}
+			]
+		}
+	],
+	"sid": 263648384350561
+}

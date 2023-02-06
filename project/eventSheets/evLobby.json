@@ -1,0 +1,475 @@
+{
+	"name": "evLobby",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "evAnimController"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evMultiplayer"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evStorage"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "evTransitions"
+		},
+		{
+			"eventType": "variable",
+			"name": "lobbyState",
+			"type": "string",
+			"initialValue": "login",
+			"comment": "Store the current state of actions on the lobby",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 969545845630901
+		},
+		{
+			"eventType": "variable",
+			"name": "variableDebug",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 842453822618481
+		},
+		{
+			"eventType": "comment",
+			"text": "Set focus to the nickname input at start"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 845036450277229
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 746265715927052,
+					"parameters": {
+						"variable": "GamePlayersReady",
+						"value": "0"
+					}
+				},
+				{
+					"id": "check-item-exists",
+					"objectClass": "LocalStorage",
+					"sid": 546459278876552,
+					"parameters": {
+						"key": "\"nickname\""
+					}
+				},
+				{
+					"id": "load-stylesheet",
+					"objectClass": "Browser",
+					"sid": 617248700459387,
+					"parameters": {
+						"url": "\"custom.css\""
+					}
+				},
+				{
+					"callFunction": "LobbyPrepareElements",
+					"sid": 347749966996575
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 764478101715531,
+					"parameters": {
+						"layer": "\"wait\"",
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 102639832794874,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-between-values",
+							"objectClass": "System",
+							"sid": 607653204172997,
+							"parameters": {
+								"value": "int(Browser.QueryParam(\"players\"))",
+								"lower-bound": "2",
+								"upper-bound": "4"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 546216427384808,
+							"parameters": {
+								"variable": "MultiplayerMaxPeers",
+								"value": "int(Browser.QueryParam(\"players\"))"
+							}
+						}
+					],
+					"sid": 620543128803910
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-item-missing",
+					"objectClass": "LocalStorage",
+					"sid": 580790874637397,
+					"parameters": {
+						"key": "\"nickname\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "TransitionInputIN",
+					"sid": 559289158236715
+				}
+			],
+			"sid": 483511260417977
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-item-exists",
+					"objectClass": "LocalStorage",
+					"sid": 129926228845716,
+					"parameters": {
+						"key": "\"nickname\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "get-item",
+					"objectClass": "LocalStorage",
+					"sid": 676220362259925,
+					"parameters": {
+						"key": "\"nickname\""
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 384710042379168
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 826055579898984,
+					"parameters": {
+						"variable": "PlayerNickname",
+						"value": "LocalStorage.ItemValue"
+					}
+				},
+				{
+					"callFunction": "MultiplayerConnect",
+					"sid": 192176287506981,
+					"parameters": [
+						"PlayerNickname"
+					]
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 619932248638277,
+					"parameters": {
+						"variable": "lobbyState",
+						"value": "\"connect\""
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "nicknameCover",
+					"sid": 862242088699849,
+					"parameters": {
+						"text": "replace(nicknameCover.Text,\"{nickname}\",PlayerNickname)"
+					}
+				}
+			],
+			"sid": 407988096944307
+		},
+		{
+			"eventType": "comment",
+			"text": "Connect Message"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 371175366118974,
+					"parameters": {
+						"variable": "lobbyState",
+						"comparison": 0,
+						"value": "\"connect\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 131471182027636,
+					"parameters": {
+						"layer": "\"wait\"",
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 705945978024142
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 410381413929820
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 707575041339409,
+					"parameters": {
+						"layer": "\"wait\"",
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 247053763404543
+		},
+		{
+			"eventType": "comment",
+			"text": "Button to enter to the lobby"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 972119654309286,
+					"parameters": {
+						"object": "uiContinue"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 786418682337000,
+					"parameters": {
+						"variable": "lobbyState",
+						"comparison": 0,
+						"value": "\"login\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 478135384620678,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 492504701787285,
+							"parameters": {
+								"first-value": "len(trim(nicknameInput.Text))",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "MultiplayerConnect",
+							"sid": 565376486706200,
+							"parameters": [
+								"nicknameInput.Text"
+							]
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "uiContinue",
+							"sid": 473887924523035,
+							"parameters": {
+								"animation": "\"push\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 720152039725012,
+							"parameters": {
+								"seconds": "0.10"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "uiContinue",
+							"sid": 114703717848103,
+							"parameters": {
+								"animation": "\"idle\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 471038948363309,
+							"parameters": {
+								"variable": "lobbyState",
+								"value": "\"connect\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "nicknameCover",
+							"sid": 959825797399659,
+							"parameters": {
+								"text": "replace(nicknameCover.Text,\"{nickname}\",PlayerNickname)"
+							}
+						},
+						{
+							"callFunction": "TransitionInputOUT",
+							"sid": 230950659006383
+						}
+					],
+					"sid": 699494118646325
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Button to search a game"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 430328843787695,
+					"parameters": {
+						"object": "uiPlay"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 838605386600984,
+					"parameters": {
+						"variable": "lobbyState",
+						"comparison": 0,
+						"value": "\"ready\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "MultiplayerMatchMaking",
+					"sid": 540811797684247
+				},
+				{
+					"callFunction": "TransitionMatchMakingIN",
+					"sid": 308648794241066
+				}
+			],
+			"sid": 860632906264763
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "LobbyUtils",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "LobbyPrepareElements",
+					"functionDescription": "",
+					"functionCategory": "Lobby",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-layer-opacity",
+							"objectClass": "System",
+							"sid": 102044087317017,
+							"parameters": {
+								"layer": "\"input\"",
+								"opacity": "0"
+							}
+						},
+						{
+							"id": "set-layer-opacity",
+							"objectClass": "System",
+							"sid": 248814303095645,
+							"parameters": {
+								"layer": "\"cover\"",
+								"opacity": "0"
+							}
+						},
+						{
+							"id": "set-layer-opacity",
+							"objectClass": "System",
+							"sid": 322677463628598,
+							"parameters": {
+								"layer": "\"bg\"",
+								"opacity": "100"
+							}
+						},
+						{
+							"id": "set-focused",
+							"objectClass": "nicknameInput",
+							"sid": 888759748578295
+						},
+						{
+							"id": "set-css-style",
+							"objectClass": "nicknameInput",
+							"sid": 365623883918282,
+							"parameters": {
+								"property-name": "\"opacity\"",
+								"value": "\"0\""
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "machmakingStatus",
+							"sid": 433185034589131,
+							"parameters": {
+								"opacity": "0"
+							}
+						}
+					],
+					"sid": 475327444410078
+				}
+			],
+			"sid": 480150584731342
+		}
+	],
+	"sid": 271906657186236
+}

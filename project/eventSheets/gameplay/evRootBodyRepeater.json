@@ -1,0 +1,117 @@
+{
+	"name": "evRootBodyRepeater",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "BodyRepeaterTime",
+			"type": "number",
+			"initialValue": "0.25",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 781661613916656
+		},
+		{
+			"eventType": "comment",
+			"text": "Body repeater"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 264132393045229,
+					"parameters": {
+						"interval-seconds": "BodyRepeaterTime"
+					}
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 858966322489881,
+					"parameters": {
+						"variable": "GameState",
+						"comparison": 0,
+						"value": "\"playing\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 262088654920868,
+			"disabled": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 688675022121556,
+							"parameters": {
+								"object": "RootBody"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 506709505158463,
+							"parameters": {
+								"object-to-create": "RootBodyRepeater",
+								"layer": "\"objects\"",
+								"x": "RootBody.X",
+								"y": "RootBody.Y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "RootBodyRepeater",
+							"sid": 858539744180358,
+							"parameters": {
+								"angle": "RootHead.Angle"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "RootBodyRepeater",
+							"sid": 838298076344476,
+							"parameters": {
+								"color": "RootHead.ColorValue"
+							}
+						}
+					],
+					"sid": 554474384654826,
+					"disabled": true
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-y",
+					"objectClass": "RootBodyRepeater",
+					"sid": 835935948566807,
+					"parameters": {
+						"comparison": 3,
+						"y-co-ordinate": "scrolly-(LayoutHeight/2)"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "RootBodyRepeater",
+					"sid": 543518861480941
+				}
+			],
+			"sid": 448016384921742,
+			"disabled": true
+		}
+	],
+	"sid": 106180845169850
+}

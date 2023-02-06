@@ -1,0 +1,221 @@
+{
+	"name": "evStorage",
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Try to get player nickname from local storage."
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 367852337868498
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 242003577035928,
+					"parameters": {
+						"variable": "MultiplayerNicknamesDB",
+						"value": "\"Caleah,Jacquelynn,Avary,Elienai,Audri,Cooper,Nolan,Janyah,Nazar,Angely,Sasha,Cheston,Espen,Shaya,Eisley,Jocelyn,Gabriela,Annarose,Blakeleigh,Atley,Darrell,Lillian,Eddie,Kyana,Damien,Araiya,Katy,Talynn,Beck,Murray,Priscilla,Janice,Araya,Jeffery,Messiah,Sabastian,Stormi,Donavan,Mathilde,Stella,Tommie,Rayshawn,Azael,Nabiha,Elicia,Sora,Dalyla,Maliah,Laksh,Aylani,Macy,Meela,Izzabelle,Raymon,Carolyn,Rick,Akshaj,Sarahi,Jaheem,Amarah,Lenox,Annsley,Madelin,Rivers,Kainan,Meghan,Ekam,Ryver,Maureen,Karla,Sultan,Lanie,Calista,Emory,Mariangel,Eamon,Davion,Brihanna,Leelan,Sydney,Zacarias,Akira,Alysia,Vyom,Marshawn,Hogan,Dayanna,Aziah,Everly,Yeison,Ezri,Jameer,Ruston,Courtney,Azariah,Giovanny,Myah,Lamya,Ralph,Elnathan,Alina,Miyah,Allyana,Citlali,Kriti,Ellyson,Tanay,Jayana,Kristal,Raelyn,Journie,Alisha,Jaylan,Bradlee,Dante,Emilee,Ariyan,Uriah,Allisson,Cristina,Acacia,Liliann,Dorothy,Keya,Mathias,Yadira,Analiese,Ford,Malachi,Darsh,Liani,Kaily,Adelle,Valerie,Apollo,Serina,Eliyah,Rosaline,Everette,Maliha,Kailee,Adaeze,Christianna,Julian,Royal,Echo,Jamyra,Noemi,Gohan,Tressa,Katherin,Rigby,Eris,Armaan,Daquan,Davidson,Mikah,Evangelina,Karver,Leni,Angelynn,Kellen,July,Ambar,Kori,Hafsa,Dylan,Rexton,Abby,Crispin,Seneca,Omri,Presley,Gwen,Karsten,Nevin,Tyrus,Denton,Jayani,Makhi,Peighton,Amy,Basil,Lyriq,Marit,Saphira,Adora,Autumn,Deonte,Yerik,Doreen,Amos,Tariah,Faiza,King,Dhilan,Sereniti,Indira,Praise,Krislynn,Carli,Cristobal,Roy,Mohamed,Cassius,Braulio,Hershy,Mariam,Elexis,Judah,Kaan,Carsyn,Kobi,Yanet,Tytan,Radha,Mamadou,Bowman,Kadin,Yaakov,Avarose,Alaya,Shay,Eddy,Zayra,Mianna,Jett,Khylie,Anali,Anahi,Jax,Aaryn,Torrance,Elgin,Lynette,Terrion,Ariya,Kelis,Locke,Jayci,Nash,Michele,Maximilliano,Amaiya,Sage,Akash,Jagger,Maggie,Lizzie,Karalyn,Harland,Tyree,Jules,Caitlynn,Demario,Chayton,Asmaa,Hadley,Cielo,Maycee,Brodie,Josiyah,Vianney,Marlei,Mason,Jesse,Jayme,Leeah,Haidyn,Danni,Janet,Deetya,Roman,Kacie,Quaid,Neymar,Collyn,Kalib,Blaine,Reilly,Ramya,Giuliana,Brenton,Emri,Cypress,Hermione,Lyra,Jerzey,Elvia,Hollis,Jorja,Karli,Allan,Hollyn,Rivka,Trinity,Anastasia,Jaeden,Jersey,Jaidah,Elowen,Klaire,Aiza,Monserrath,Audrielle,Harbor,Akasha,Celine,Graceson,Gino,Annalyn,Auriella,Charissa,Leann,Cedar,Pete,Jayceion,Maizie,Ariannah,Avyanna,Vanya,Asher,Rodney,Advay,Aahana,Justus,Persephone,Namir,Aela,Jaide,Camber,Lexi,Cheyanne,Lotus,Kamyla,Iann,Aarush,Stacey,Clarissa,Roxy,Renner,Kris,Keelyn,Jerrod,Eliora,Queena,Bowie,Kiah,Jailee,Melodie,Zyon,Sariyah,Dedrick,Cody,Ikaika,Mohamedamin,Lilly,Kaeli,Anvita,Zaire,Kayle,Gracee,Damarion,Agastya,Avrohom,Mayleigh,Townes,Kerrington,Nadya,Lukah,Frederick,Khaiden,Issa,Alley,Ameerah,Alexis,Ciaran,Emran,Maddie,Ryan,Kahlil,Ayson,Renee,Haneen,Maysen,Abdullah,Freeman,Tayvion,Tayson,Danya,Raylan,Briasia,Imaan,Cyler,Emiley,Harmoni,Eviana,Brystal,Madisen,Kristi,Azure,Rima,Skylyn,Harlow,Vernon,Luna,Arlene,Patience,Iziah,Remi,Aylah,Tatiana,Jaxin,Braylynn,Brooks,Risha,Genavieve,Javeon,Atlee,Marciano,Huck,Amery,Gracie,Camellia,Griselda,Zuri,Karas,Zabdiel,Aayan,Sylvester,Moises,Mackayla,Brigitte,Yasin,Marina,Theodor,Jonah,Kanyon,Amier,Jethro,Jude,Tillman,Osias,Kadyn,Dandre,An,Annika,Kalayah,Alexandru,Chapman,Lucious,Violeta,Emmy,Knowledge,Armin,Kashmir,Krystal,Krishiv,Shannon,Symphony,Sally,Akayla,Jensen,Abbigail,Aero,Keigan,Danna,Jayvien,Yahaira,Jasper,Clarke,Skylan,Nadine,Elayna,Mackenzi,Coralyn,Jahiem,Daylin,Lillith,Tara,Bram,Eleni,Brailynn,Ahmad,Macklin,Asad,Alfonzo,Adalene,Kristoff,Eva,Marlie,Abella,Hadlee,Brently,Romello,Stewart,Averie,Arlee,Kady,Taylen\""
+					}
+				},
+				{
+					"id": "check-item-exists",
+					"objectClass": "LocalStorage",
+					"sid": 732131920813272,
+					"parameters": {
+						"key": "\"nickname\""
+					}
+				}
+			],
+			"sid": 825100667283218
+		},
+		{
+			"eventType": "comment",
+			"text": "Load the player nickname"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-item-exists",
+					"objectClass": "LocalStorage",
+					"sid": 438459733142989,
+					"parameters": {
+						"key": "\"nickname\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 417447079966460,
+					"parameters": {
+						"variable": "PlayerNickname",
+						"value": "LocalStorage.ItemValue"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "nicknameInput",
+					"sid": 116922795322886,
+					"parameters": {
+						"text": "PlayerNickname"
+					}
+				}
+			],
+			"sid": 500632501056287
+		},
+		{
+			"eventType": "comment",
+			"text": " If isn't exists we will suggest one"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-item-missing",
+					"objectClass": "LocalStorage",
+					"sid": 518393907554798,
+					"parameters": {
+						"key": "\"nickname\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 781631253383393,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 741408352765418,
+							"parameters": {
+								"variable": "PlayerNickname",
+								"value": "Functions.StorageGenerateNickname"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "nicknameInput",
+							"sid": 404403385239153,
+							"parameters": {
+								"text": "PlayerNickname"
+							}
+						}
+					],
+					"sid": 734378222303652
+				}
+			]
+		},
+		{
+			"functionName": "StorageGenerateNickname",
+			"functionDescription": "",
+			"functionCategory": "Storage",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 785242695967460,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "NicknamesTokenCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "Stores the total of tokens for nicknames db",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 653671176041377
+				},
+				{
+					"eventType": "variable",
+					"name": "TokenRandomPosition",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "Stores the random position to get the nickname token",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 145564076030329
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 136439062292906,
+							"parameters": {
+								"variable": "NicknamesTokenCount",
+								"value": "tokencount(MultiplayerNicknamesDB,\",\")"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 507727298079286,
+							"parameters": {
+								"variable": "TokenRandomPosition",
+								"value": "floor(random(0,NicknamesTokenCount))"
+							}
+						},
+						{
+							"id": "set-return-value",
+							"objectClass": "Function",
+							"sid": 443058268809645,
+							"parameters": {
+								"value": "uppercase(tokenat(MultiplayerNicknamesDB,TokenRandomPosition,\",\")) & right(str(Date.Now),2)"
+							}
+						}
+					],
+					"sid": 401075657778020
+				}
+			]
+		},
+		{
+			"functionName": "StorageSaveNickname",
+			"functionDescription": "",
+			"functionCategory": "Storage",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "nickname",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 457636078945779
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-item",
+					"objectClass": "LocalStorage",
+					"sid": 209415831341081,
+					"parameters": {
+						"key": "\"nickname\"",
+						"value": "nickname"
+					}
+				}
+			],
+			"sid": 563910008936262
+		}
+	],
+	"sid": 782803222950602
+}

@@ -1,0 +1,585 @@
+{
+	"name": "evRootController",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "rootControllerX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 398241393764434
+		},
+		{
+			"eventType": "variable",
+			"name": "rootControllerY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 414056937784128
+		},
+		{
+			"eventType": "variable",
+			"name": "rootDistance",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 862401837759535
+		},
+		{
+			"eventType": "variable",
+			"name": "rootID",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 175601708028875
+		},
+		{
+			"eventType": "variable",
+			"name": "ROOT_COLOR_1",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 355162039397582
+		},
+		{
+			"eventType": "variable",
+			"name": "ROOT_COLOR_2",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 126733693040761
+		},
+		{
+			"eventType": "variable",
+			"name": "ROOT_COLOR_3",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 951437831865892
+		},
+		{
+			"eventType": "variable",
+			"name": "ROOT_COLOR_4",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 954939741588639
+		},
+		{
+			"eventType": "comment",
+			"text": "Prepare root colors"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 134319854100196
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 528307060789106,
+					"parameters": {
+						"variable": "ROOT_COLOR_1",
+						"value": "rgbEx255(13,121,242)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 425992450498776,
+					"parameters": {
+						"variable": "ROOT_COLOR_2",
+						"value": "rgbEx255(147,13,242)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 446863237238165,
+					"parameters": {
+						"variable": "ROOT_COLOR_3",
+						"value": "rgbEx255(242,13,175)"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 664884227274067,
+					"parameters": {
+						"variable": "ROOT_COLOR_4",
+						"value": "rgbEx255(229,242,13)"
+					}
+				}
+			],
+			"sid": 134550083866184
+		},
+		{
+			"functionName": "RootCreateHead",
+			"functionDescription": "Create a new root head in game",
+			"functionCategory": "RootController",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "peerID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 168666078872187
+				},
+				{
+					"name": "nickname",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 959137058843778
+				},
+				{
+					"name": "posX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 387888524473105
+				},
+				{
+					"name": "posY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 808607834375925
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 646976018566633,
+					"parameters": {
+						"object-to-create": "RootHead",
+						"layer": "\"objects\"",
+						"x": "posX",
+						"y": "posY",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "associate-object-with-peer",
+					"objectClass": "Multiplayer",
+					"sid": 569582739054653,
+					"parameters": {
+						"object": "RootHead",
+						"peer-id": "peerID"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "RootHead",
+					"sid": 482184269534633,
+					"parameters": {
+						"instance-variable": "ID",
+						"value": "peerID"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "RootHead",
+					"sid": 811883812950050,
+					"parameters": {
+						"instance-variable": "nickname",
+						"value": "nickname"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "RootHead",
+					"sid": 908457326509906,
+					"parameters": {
+						"instance-variable": "limitSpeed",
+						"value": "300"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "RootHead",
+					"sid": 773046778860143,
+					"parameters": {
+						"instance-variable": "speed",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "RootHeadNickname",
+					"sid": 110698891281466,
+					"parameters": {
+						"text": "nickname"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "RootBody",
+					"sid": 791798780554905,
+					"parameters": {
+						"instance-variable": "ID",
+						"value": "RootHead.ID"
+					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 910730243841582,
+					"parameters": {
+						"variable": "GamePlayerNextPosition",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 500102986673302,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 537945510554763,
+							"parameters": {
+								"variable": "GamePlayerNextPosition",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "RootHead",
+							"sid": 591022091065481,
+							"parameters": {
+								"color": "ROOT_COLOR_1"
+							}
+						}
+					],
+					"sid": 413873584367657
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 678521747144987
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 415827250333943,
+							"parameters": {
+								"variable": "GamePlayerNextPosition",
+								"comparison": 0,
+								"value": "2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "RootHead",
+							"sid": 246868863095176,
+							"parameters": {
+								"color": "ROOT_COLOR_2"
+							}
+						}
+					],
+					"sid": 618085894624854
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 705943343110638
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 622877924291251,
+							"parameters": {
+								"variable": "GamePlayerNextPosition",
+								"comparison": 0,
+								"value": "3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "RootHead",
+							"sid": 860046639613255,
+							"parameters": {
+								"color": "ROOT_COLOR_3"
+							}
+						}
+					],
+					"sid": 105380920269339
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 343179354466758
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 845565358115552,
+							"parameters": {
+								"variable": "GamePlayerNextPosition",
+								"comparison": 0,
+								"value": "4"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "RootHead",
+							"sid": 257813366736392,
+							"parameters": {
+								"color": "ROOT_COLOR_4"
+							}
+						}
+					],
+					"sid": 977835849094891
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-default-color",
+							"objectClass": "RootIrisLeft",
+							"sid": 327385667648450,
+							"parameters": {
+								"color": "RootHead.ColorValue"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "RootIrisRight",
+							"sid": 769170467652660,
+							"parameters": {
+								"color": "RootHead.ColorValue"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "RootBody",
+							"sid": 926013774123884,
+							"parameters": {
+								"color": "RootHead.ColorValue"
+							}
+						}
+					],
+					"sid": 966030312854388
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "When root head it's created, it needs to setup his eyes and body"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "RootHead",
+					"sid": 350868930109798
+				}
+			],
+			"actions": [
+				{
+					"id": "pin",
+					"objectClass": "RootIrisLeft",
+					"sid": 579461818726759,
+					"behaviorType": "Orbit",
+					"parameters": {
+						"target": "RootEyeLeft"
+					}
+				},
+				{
+					"id": "pin",
+					"objectClass": "RootIrisRight",
+					"sid": 525530532370160,
+					"behaviorType": "Orbit",
+					"parameters": {
+						"target": "RootEyeRight"
+					}
+				},
+				{
+					"id": "pin-to-object-imagepoint",
+					"objectClass": "RootEyeLeft",
+					"sid": 826979471444935,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "RootHead",
+						"image-point": "\"eyeLeft\"",
+						"angle": false,
+						"width-type": "scale",
+						"height-type": "scale",
+						"z": false
+					}
+				},
+				{
+					"id": "pin-to-object-imagepoint",
+					"objectClass": "RootEyeRight",
+					"sid": 611924176005339,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "RootHead",
+						"image-point": "\"eyeRight\"",
+						"angle": false,
+						"width-type": "scale",
+						"height-type": "scale",
+						"z": false
+					}
+				},
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "RootBody",
+					"sid": 632528084682662,
+					"parameters": {
+						"object": "RootHead",
+						"image-point-optional": "\"body\""
+					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "RootBody",
+					"sid": 304385442247631,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "RootHead",
+						"x": true,
+						"y": true,
+						"angle": true,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "RootHeadNickname",
+					"sid": 156139665317653,
+					"parameters": {
+						"x": "RootHead.X",
+						"y": "RootHead.Y+50"
+					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "RootHeadNickname",
+					"sid": 678696556722681,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "RootHead",
+						"x": true,
+						"y": true,
+						"angle": false,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				}
+			],
+			"sid": 774480684433432
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "RootBody",
+					"sid": 732641910277798
+				}
+			],
+			"actions": [
+				{
+					"id": "move-to-bottom",
+					"objectClass": "RootBody",
+					"sid": 866302069089166
+				},
+				{
+					"id": "move-to-top",
+					"objectClass": "RootHeadNickname",
+					"sid": 818354766633628
+				}
+			],
+			"sid": 123871464963228
+		},
+		{
+			"eventType": "comment",
+			"text": "Update ground position"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 668853128637563
+				}
+			],
+			"actions": [
+				{
+					"id": "set-image-offset-x",
+					"objectClass": "tiledGround",
+					"sid": 788871917040203,
+					"parameters": {
+						"offset-x": "-scrollx"
+					}
+				},
+				{
+					"id": "set-image-offset-y",
+					"objectClass": "tiledGround",
+					"sid": 273498981733059,
+					"parameters": {
+						"offset-y": "-scrolly"
+					}
+				}
+			],
+			"sid": 117139534938410
+		}
+	],
+	"sid": 141112421495886
+}

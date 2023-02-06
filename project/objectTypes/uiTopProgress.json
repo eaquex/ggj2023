@@ -1,0 +1,35 @@
+{
+	"name": "uiTopProgress",
+	"plugin-id": "TiledBg",
+	"sid": 531928696892005,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "maxWidth",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 617950420880743
+		},
+		{
+			"name": "progress",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 379362875333079
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 550,
+		"height": 119,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"imageSpriteId": 1259238,
+		"useCollisionPoly": true
+	}
+}

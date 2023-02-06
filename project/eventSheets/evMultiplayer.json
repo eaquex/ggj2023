@@ -1,0 +1,3588 @@
+{
+	"name": "evMultiplayer",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "MultiplayerName",
+			"type": "string",
+			"initialValue": "KrystalStudioRootsRace",
+			"comment": "Multiplayer Game Name",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 628921421794776
+		},
+		{
+			"eventType": "variable",
+			"name": "MultiplayerInstanceName",
+			"type": "string",
+			"initialValue": "v1.0.0",
+			"comment": "Multiplayer Instance Name",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 785954594014031
+		},
+		{
+			"eventType": "variable",
+			"name": "MultiplayerRoomName",
+			"type": "string",
+			"initialValue": "game",
+			"comment": "Multiplayer Generic Room Name",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 248168043205717
+		},
+		{
+			"eventType": "variable",
+			"name": "MultiplayerNicknamesDB",
+			"type": "string",
+			"initialValue": "",
+			"comment": "Store the generic nicknames for the player",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 509998271596943
+		},
+		{
+			"eventType": "variable",
+			"name": "MultiplayerMaxPeers",
+			"type": "number",
+			"initialValue": "4",
+			"comment": "Max player number for each game",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 213073930576298
+		},
+		{
+			"eventType": "variable",
+			"name": "PlayerRoom",
+			"type": "string",
+			"initialValue": "",
+			"comment": "The current player nickname",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 760359358310779
+		},
+		{
+			"eventType": "variable",
+			"name": "PlayerNickname",
+			"type": "string",
+			"initialValue": "",
+			"comment": "The current player nickname",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 759982598077185
+		},
+		{
+			"eventType": "variable",
+			"name": "PlayerAlias",
+			"type": "string",
+			"initialValue": "",
+			"comment": "The current player nickname",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 977232879199891
+		},
+		{
+			"eventType": "variable",
+			"name": "PlayerPeerID",
+			"type": "string",
+			"initialValue": "",
+			"comment": "The current assigned player peer id ",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 395974377474476
+		},
+		{
+			"eventType": "variable",
+			"name": "GameState",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 555801459670783
+		},
+		{
+			"eventType": "variable",
+			"name": "GameProgress",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 703263029571659
+		},
+		{
+			"eventType": "variable",
+			"name": "GameProgressSpeed",
+			"type": "number",
+			"initialValue": "0.03",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 738960201918559
+		},
+		{
+			"eventType": "variable",
+			"name": "GamePlayersReady",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 102611147699801
+		},
+		{
+			"eventType": "variable",
+			"name": "GamePlayerNextPosition",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 573026330034884
+		},
+		{
+			"eventType": "variable",
+			"name": "GameWinnerID",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 867668220401965
+		},
+		{
+			"eventType": "variable",
+			"name": "GameWinnerMaxDistance",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 584377106754099
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "MultiplayerLobby",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Actions when multiplayer it's connected"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-connected",
+							"objectClass": "Multiplayer",
+							"sid": 679343549736785
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 282859687085245,
+							"parameters": {
+								"variable": "lobbyState",
+								"value": "\"ready\""
+							}
+						},
+						{
+							"id": "log-in",
+							"objectClass": "Multiplayer",
+							"sid": 100972660714788,
+							"parameters": {
+								"alias": "PlayerNickname"
+							}
+						}
+					],
+					"sid": 489156324980734
+				},
+				{
+					"eventType": "comment",
+					"text": "Logged in in multiplayer server"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-logged-in",
+							"objectClass": "Multiplayer",
+							"sid": 498883578584952
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 920999831862027,
+							"parameters": {
+								"variable": "PlayerAlias",
+								"value": "Multiplayer.MyAlias"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 332559552060125,
+							"parameters": {
+								"variable": "PlayerPeerID",
+								"value": "Multiplayer.MyID"
+							}
+						},
+						{
+							"callFunction": "TransitionCoverIN",
+							"sid": 757798172471416
+						}
+					],
+					"sid": 840183865042683
+				},
+				{
+					"eventType": "comment",
+					"text": "On joined room"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-joined-room",
+							"objectClass": "Multiplayer",
+							"sid": 761314780404284
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 811184488304322,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 492214415176648,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Update current player room"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 939346751467305,
+									"parameters": {
+										"first-value": "Multiplayer.PeerID",
+										"comparison": 0,
+										"second-value": "PlayerPeerID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 370229973791561,
+									"parameters": {
+										"variable": "PlayerRoom",
+										"value": "Multiplayer.CurrentRoom"
+									}
+								}
+							],
+							"sid": 502458717244525
+						},
+						{
+							"eventType": "script",
+							"script": "console.log(\"joined room !!!\");"
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "On left room"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-left-room",
+							"objectClass": "Multiplayer",
+							"sid": 575509776740617
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 257426696231409,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 416206403024734,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Update current player room"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 189032583825436,
+									"parameters": {
+										"first-value": "Multiplayer.PeerID",
+										"comparison": 0,
+										"second-value": "PlayerPeerID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 891872411951644,
+									"parameters": {
+										"variable": "PlayerRoom",
+										"value": "\"\""
+									}
+								}
+							],
+							"sid": 299376978028387
+						},
+						{
+							"eventType": "script",
+							"script": "console.log(\"left room !!!\");"
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Matchmaking Update"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-connected",
+							"objectClass": "Multiplayer",
+							"sid": 764942747611926
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 155358023710882,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"value": "1"
+							}
+						},
+						{
+							"id": "send-message",
+							"objectClass": "Multiplayer",
+							"sid": 435588994949812,
+							"parameters": {
+								"peer-id": "\"\"",
+								"tag": "\"ready\"",
+								"message": "\"\"",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 329235037647832,
+					"children": [
+						{
+							"eventType": "script",
+							"script": "console.log(\"peer connected !!!\");"
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-disconnected",
+							"objectClass": "Multiplayer",
+							"sid": 445453770256758
+						}
+					],
+					"actions": [
+						{
+							"id": "send-message",
+							"objectClass": "Multiplayer",
+							"sid": 495753125698419,
+							"parameters": {
+								"peer-id": "\"\"",
+								"tag": "\"leave\"",
+								"message": "\"\"",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 413095819402291,
+					"children": [
+						{
+							"eventType": "script",
+							"script": "console.log(\"peer disconnected !!!\");"
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Disconect all peers for the room"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-host-disconnected",
+							"objectClass": "Multiplayer",
+							"sid": 702890644178465
+						}
+					],
+					"actions": [
+						{
+							"id": "disconnect-signalling",
+							"objectClass": "Multiplayer",
+							"sid": 952863140170840
+						},
+						{
+							"callFunction": "TransitionMatchMakingOUT",
+							"sid": 347561870887508,
+							"parameters": [
+								true
+							]
+						}
+					],
+					"sid": 490836400372207,
+					"children": [
+						{
+							"eventType": "script",
+							"script": "console.log(\"host disconnected !!!\");"
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Disconnected"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-disconnected",
+							"objectClass": "Multiplayer",
+							"sid": 625200918259320
+						}
+					],
+					"actions": [],
+					"sid": 641558861831509,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "script",
+							"script": "console.log(\"signalling disconnected !!!\");",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "On Error"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-error",
+							"objectClass": "Multiplayer",
+							"sid": 878041741066000
+						}
+					],
+					"actions": [],
+					"sid": 689558503107482,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "script",
+							"script": "console.log(\"signalling error !!!\");",
+							"disabled": true
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Update matchmaking"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 940467267936830,
+							"parameters": {
+								"interval-seconds": "1"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 455024006255397,
+							"parameters": {
+								"variable": "lobbyState",
+								"comparison": 0,
+								"value": "\"matchmaking\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "machmakingStatus",
+							"sid": 867337931393837,
+							"parameters": {
+								"text": "\"Searching for players...\" & newline & Multiplayer.PeerCount & \"/\" & MultiplayerMaxPeers"
+							}
+						}
+					],
+					"sid": 376102313533597,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-peer-count",
+									"objectClass": "Multiplayer",
+									"sid": 368663204716974,
+									"parameters": {
+										"comparison": 0,
+										"count": "MultiplayerMaxPeers"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 735471399398063,
+									"parameters": {
+										"variable": "GamePlayersReady",
+										"comparison": 0,
+										"value": "MultiplayerMaxPeers"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "machmakingStatus",
+									"sid": 558961328219681,
+									"parameters": {
+										"text": "\"Starting game...\""
+									}
+								},
+								{
+									"id": "broadcast-message",
+									"objectClass": "Multiplayer",
+									"sid": 144891512705946,
+									"parameters": {
+										"from-id": "\"\"",
+										"tag": "\"join\"",
+										"message": "\"\"",
+										"mode": "reliable-ordered"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 475119946596611,
+									"parameters": {
+										"seconds": "3"
+									}
+								}
+							],
+							"sid": 471553079525365,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-host",
+											"objectClass": "Multiplayer",
+											"sid": 599501327682608
+										}
+									],
+									"actions": [
+										{
+											"id": "broadcast-message",
+											"objectClass": "Multiplayer",
+											"sid": 607325770932803,
+											"parameters": {
+												"from-id": "\"\"",
+												"tag": "\"play\"",
+												"message": "\"\"",
+												"mode": "reliable-ordered"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 986122561168887,
+											"parameters": {
+												"variable": "lobbyState",
+												"value": "\"play\""
+											}
+										},
+										{
+											"callFunction": "TransitionLobbyOUT",
+											"sid": 998384882592913
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 847346638662258,
+											"parameters": {
+												"seconds": "transitionTime"
+											}
+										},
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 630853708404417,
+											"parameters": {
+												"layout": "game"
+											}
+										}
+									],
+									"sid": 902292491167398
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Ready state"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 990938501570644,
+							"parameters": {
+								"tag": "\"join\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 588086170875141,
+							"parameters": {
+								"variable": "lobbyState",
+								"value": "\"join\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "machmakingStatus",
+							"sid": 996401297776491,
+							"parameters": {
+								"text": "\"Starting game...\""
+							}
+						}
+					],
+					"sid": 494504120917724
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 466871047618184,
+							"parameters": {
+								"tag": "\"ready\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 278758740640869,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 310800522912164,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 865269349100084,
+							"parameters": {
+								"tag": "\"no-ready\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 748304373297680,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 395999345627894,
+					"disabled": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Start the game"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 977162156665069,
+							"parameters": {
+								"tag": "\"play\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 890429373708655,
+							"parameters": {
+								"variable": "lobbyState",
+								"value": "\"play\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "machmakingStatus",
+							"sid": 665921813382021,
+							"parameters": {
+								"text": "\"\""
+							}
+						},
+						{
+							"callFunction": "TransitionLobbyOUT",
+							"sid": 373698602090536
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 681778110196807,
+							"parameters": {
+								"seconds": "transitionTime"
+							}
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 533592313029588,
+							"parameters": {
+								"layout": "game"
+							}
+						}
+					],
+					"sid": 987265952638238
+				},
+				{
+					"eventType": "comment",
+					"text": "Debug"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 373893553790441
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Debug",
+							"sid": 585698770335278,
+							"parameters": {
+								"text": "\"GamePlayersReady: \" & GamePlayersReady"
+							}
+						}
+					],
+					"sid": 363875055859940
+				}
+			],
+			"sid": 622056269432839
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "MultiplayerHost",
+			"description": "",
+			"isActiveOnStart": false,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Client:  Player creation request"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 182978673852836,
+							"parameters": {
+								"tag": "\"create\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 185696666117203,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 810378396121662,
+									"parameters": {
+										"first-value": "len(trim(Multiplayer.Message))",
+										"comparison": 4,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "RootCreateHead",
+									"sid": 336132409037225,
+									"parameters": [
+										"Multiplayer.Message",
+										"Multiplayer.FromAlias",
+										"100 + GamePlayerNextPosition*300",
+										"300"
+									]
+								}
+							],
+							"sid": 344707972225918
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Client:  Player creation confirmed"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 634306904062279,
+							"parameters": {
+								"tag": "\"ready\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 163063519586635,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 930430439585712
+				},
+				{
+					"eventType": "comment",
+					"text": "When players ready start"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 343748723486488,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"setup\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 365029464732284,
+							"parameters": {
+								"variable": "GamePlayersReady",
+								"comparison": 5,
+								"value": "Multiplayer.PeerCount"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 787481367427178,
+							"parameters": {
+								"first-value": "RootHead.Count",
+								"comparison": 0,
+								"second-value": "Multiplayer.PeerCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 137161759986515,
+							"parameters": {
+								"variable": "GameState",
+								"value": "\"playing\""
+							}
+						},
+						{
+							"id": "broadcast-message",
+							"objectClass": "Multiplayer",
+							"sid": 715985956313417,
+							"parameters": {
+								"from-id": "\"\"",
+								"tag": "\"start\"",
+								"message": "\"\"",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 662922803640307
+				},
+				{
+					"eventType": "comment",
+					"text": "Root Tail only if moving root head"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 332689210391650,
+							"parameters": {
+								"interval-seconds": "0.10"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 269196949361164,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 113980299671717,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "Multiplayer.PeerCount-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 409931527055255,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 502590897275405,
+											"parameters": {
+												"object": "RootHead",
+												"expression": "RootHead.ID",
+												"comparison": 0,
+												"value": "Multiplayer.PeerIDAt(loopindex)"
+											}
+										},
+										{
+											"id": "is-moving",
+											"objectClass": "RootHead",
+											"sid": 968060459833174,
+											"behaviorType": "Car"
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 735460395710321,
+											"parameters": {
+												"object-to-create": "RootBodyRepeater",
+												"layer": "\"objects\"",
+												"x": "RootBody.X",
+												"y": "RootBody.Y",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-default-color",
+											"objectClass": "RootBodyRepeater",
+											"sid": 495792031130390,
+											"parameters": {
+												"color": "RootHead.ColorValue"
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "RootBodyRepeater",
+											"sid": 901300572759229,
+											"parameters": {
+												"angle": "RootBody.Angle"
+											}
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "RootBodyRepeater",
+											"sid": 867199643580157
+										},
+										{
+											"id": "broadcast-message",
+											"objectClass": "Multiplayer",
+											"sid": 596059021203066,
+											"parameters": {
+												"from-id": "\"\"",
+												"tag": "\"root-body-repeater\"",
+												"message": "RootHead.ID",
+												"mode": "reliable-ordered"
+											}
+										}
+									],
+									"sid": 601310634771383,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 669525938397835,
+													"parameters": {
+														"variable": "GameState",
+														"comparison": 0,
+														"value": "\"timeout\""
+													}
+												},
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 722735857348112,
+													"parameters": {
+														"variable": "GameState",
+														"comparison": 0,
+														"value": "\"finish\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-fade-out-time",
+													"objectClass": "RootBodyRepeater",
+													"sid": 677938402647167,
+													"behaviorType": "Fade",
+													"parameters": {
+														"fade-out-time": "9999"
+													}
+												},
+												{
+													"id": "restart-fade",
+													"objectClass": "RootBodyRepeater",
+													"sid": 782028894285001,
+													"behaviorType": "Fade"
+												}
+											],
+											"sid": 350162756647822,
+											"isOrBlock": true
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Camera Update"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 949238381524561,
+							"parameters": {
+								"first-value": "RootHead.ID",
+								"comparison": 0,
+								"second-value": "Multiplayer.HostID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 829798197519258,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Camera follow root"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "scroll-to-position",
+									"objectClass": "System",
+									"sid": 889406438349477,
+									"parameters": {
+										"x": "lerp(scrollx,RootHead.X,0.06)",
+										"y": "lerp(scrolly,RootHead.Y,0.06)"
+									}
+								}
+							],
+							"sid": 229511458346235
+						},
+						{
+							"eventType": "comment",
+							"text": "Ground update"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-image-offset-x",
+									"objectClass": "tiledGround",
+									"sid": 968650796223021,
+									"parameters": {
+										"offset-x": "-scrollx"
+									}
+								},
+								{
+									"id": "set-image-offset-y",
+									"objectClass": "tiledGround",
+									"sid": 816725387693499,
+									"parameters": {
+										"offset-y": "-scrolly"
+									}
+								}
+							],
+							"sid": 903636345765711
+						},
+						{
+							"eventType": "comment",
+							"text": "Distance update"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 178216171080753,
+									"parameters": {
+										"variable": "rootDistance",
+										"value": "RootHead.distance"
+									}
+								}
+							],
+							"sid": 576482229838474
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Game Loop"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 786755040538540,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"playing\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 220193911006916,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Update game progress"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 485984234567486,
+									"parameters": {
+										"variable": "GameProgress",
+										"value": "GameProgress+GameProgressSpeed"
+									}
+								}
+							],
+							"sid": 783389322181095,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 640045414233837,
+											"parameters": {
+												"variable": "GameProgress",
+												"comparison": 5,
+												"value": "100"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 947192203538423,
+											"parameters": {
+												"variable": "GameState",
+												"value": "\"timeout\""
+											}
+										},
+										{
+											"id": "broadcast-message",
+											"objectClass": "Multiplayer",
+											"sid": 160126525028787,
+											"parameters": {
+												"from-id": "\"\"",
+												"tag": "\"timeout\"",
+												"message": "\"\"",
+												"mode": "reliable-ordered"
+											}
+										}
+									],
+									"sid": 763098945867652
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "For each peers"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 613217482567186,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "Multiplayer.PeerCount-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 479371253036093,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "currentPeerId",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 918598298996596
+								},
+								{
+									"eventType": "variable",
+									"name": "PeerID",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 222996564610314
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 709136601275901,
+											"parameters": {
+												"variable": "PeerID",
+												"value": "Multiplayer.PeerIDAt(loopindex)"
+											}
+										}
+									],
+									"sid": 971226084126698
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 639413931476609,
+											"parameters": {
+												"object": "RootHead",
+												"expression": "RootHead.ID",
+												"comparison": 0,
+												"value": "Multiplayer.PeerIDAt(loopindex)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 379143220710592,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "Move peers"
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "simulate-control",
+													"objectClass": "RootHead",
+													"sid": 996535768136031,
+													"behaviorType": "Car",
+													"parameters": {
+														"control": "accelerate"
+													}
+												}
+											],
+											"sid": 881601465815500
+										},
+										{
+											"eventType": "comment",
+											"text": "Sync time"
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "RootHead",
+													"sid": 979750389580125,
+													"parameters": {
+														"instance-variable": "progress",
+														"value": "GameProgress"
+													}
+												}
+											],
+											"sid": 237937388046108
+										},
+										{
+											"eventType": "comment",
+											"text": "Sync Distance"
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "RootHead",
+													"sid": 280806036759570,
+													"parameters": {
+														"instance-variable": "distance",
+														"value": "RootHead.Y/100"
+													}
+												}
+											],
+											"sid": 753709063180838
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Player Control (Host)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-comparison",
+									"objectClass": "System",
+									"sid": 663521144219311,
+									"parameters": {
+										"object": "RootHead",
+										"expression": "RootHead.ID",
+										"comparison": 0,
+										"value": "Multiplayer.HostID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 242680387725620,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-touching-object",
+											"objectClass": "Touch",
+											"sid": 834831718786859,
+											"parameters": {
+												"object": "uiMoveLeft"
+											}
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 206100392006623,
+											"parameters": {
+												"key": 37
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "RootHead",
+											"sid": 876179968767529,
+											"behaviorType": "Car",
+											"parameters": {
+												"control": "steer-right"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveLeft",
+											"sid": 444217577171416,
+											"parameters": {
+												"animation": "\"push\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 414501387867954,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 689595904990560
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveLeft",
+											"sid": 231475513891002,
+											"parameters": {
+												"animation": "\"idle\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 963101519515306
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-touching-object",
+											"objectClass": "Touch",
+											"sid": 624526029377059,
+											"parameters": {
+												"object": "uiMoveRight"
+											}
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 920647106017469,
+											"parameters": {
+												"key": 39
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "RootHead",
+											"sid": 438171022068434,
+											"behaviorType": "Car",
+											"parameters": {
+												"control": "steer-left"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveRight",
+											"sid": 815572607437343,
+											"parameters": {
+												"animation": "\"push\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 866500645019145,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 885742587578143
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveRight",
+											"sid": 557057684656949,
+											"parameters": {
+												"animation": "\"idle\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 608236083238020
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Player Control (Clients)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-peer-message",
+									"objectClass": "Multiplayer",
+									"sid": 602620007370140,
+									"parameters": {
+										"tag": "\"left\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 922208644904058,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 890930829663469,
+											"parameters": {
+												"object": "RootHead",
+												"expression": "RootHead.ID",
+												"comparison": 0,
+												"value": "Multiplayer.FromID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "RootHead",
+											"sid": 762423433861761,
+											"behaviorType": "Car",
+											"parameters": {
+												"control": "steer-right"
+											}
+										}
+									],
+									"sid": 462275314530010
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-peer-message",
+									"objectClass": "Multiplayer",
+									"sid": 610028309175480,
+									"parameters": {
+										"tag": "\"right\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 747789041431098,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 472820269386558,
+											"parameters": {
+												"object": "RootHead",
+												"expression": "RootHead.ID",
+												"comparison": 0,
+												"value": "Multiplayer.FromID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "simulate-control",
+											"objectClass": "RootHead",
+											"sid": 424523994771927,
+											"behaviorType": "Car",
+											"parameters": {
+												"control": "steer-left"
+											}
+										}
+									],
+									"sid": 510372181327934
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Game timeout"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 325695415669896,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"timeout\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Debug",
+							"sid": 340555883683332,
+							"parameters": {
+								"text": "\"timeout \""
+							}
+						}
+					],
+					"sid": 478340114524637,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 504623643974097
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 372213888042740,
+									"parameters": {
+										"variable": "GamePlayersReady",
+										"value": "0"
+									}
+								},
+								{
+									"id": "set-wait-time",
+									"objectClass": "RootBodyRepeater",
+									"sid": 967617337770977,
+									"behaviorType": "Fade",
+									"parameters": {
+										"wait-time": "9999"
+									}
+								},
+								{
+									"id": "restart-fade",
+									"objectClass": "RootBodyRepeater",
+									"sid": 799070177360981,
+									"behaviorType": "Fade"
+								},
+								{
+									"id": "restart-fade",
+									"objectClass": "uiMoveLeft",
+									"sid": 717119223899244,
+									"behaviorType": "Fade"
+								},
+								{
+									"id": "restart-fade",
+									"objectClass": "uiMoveRight",
+									"sid": 372117917566484,
+									"behaviorType": "Fade"
+								}
+							],
+							"sid": 972712321660539
+						},
+						{
+							"eventType": "comment",
+							"text": "Wait for all heads stop moving"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 105283431351998,
+									"parameters": {
+										"object": "RootHead"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 406368571757512,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-moving",
+											"objectClass": "RootHead",
+											"sid": 110192695057070,
+											"behaviorType": "Car",
+											"isInverted": true
+										},
+										{
+											"id": "trigger-once-while-true",
+											"objectClass": "System",
+											"sid": 336023112908126
+										}
+									],
+									"actions": [
+										{
+											"id": "add-to-eventvar",
+											"objectClass": "System",
+											"sid": 634855766755935,
+											"parameters": {
+												"variable": "GamePlayersReady",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 884161807892744
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "Debug",
+											"sid": 256427461650824,
+											"parameters": {
+												"text": "Self.Text & \"Ready:\" & GamePlayersReady"
+											}
+										}
+									],
+									"sid": 284304472285424
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 158340067151054,
+											"parameters": {
+												"variable": "GamePlayersReady",
+												"comparison": 5,
+												"value": "Multiplayer.PeerCount"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "MultiplayerGetWinner",
+											"sid": 710309382523478
+										},
+										{
+											"id": "broadcast-message",
+											"objectClass": "Multiplayer",
+											"sid": 338681653293594,
+											"parameters": {
+												"from-id": "\"\"",
+												"tag": "\"finish\"",
+												"message": "GameWinnerID",
+												"mode": "reliable-unordered"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 218582107949777,
+											"parameters": {
+												"variable": "GameState",
+												"value": "\"finish\""
+											}
+										},
+										{
+											"id": "set-layer-opacity",
+											"objectClass": "System",
+											"sid": 202023057973876,
+											"parameters": {
+												"layer": "\"overlay\"",
+												"opacity": "70"
+											}
+										},
+										{
+											"id": "set-layer-opacity",
+											"objectClass": "System",
+											"sid": 421661057286746,
+											"parameters": {
+												"layer": "\"result\"",
+												"opacity": "100"
+											}
+										}
+									],
+									"sid": 848937455962066,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 438802795364743,
+													"parameters": {
+														"first-value": "Multiplayer.MyID",
+														"comparison": 0,
+														"second-value": "GameWinnerID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "txtResult",
+													"sid": 437554983620081,
+													"parameters": {
+														"text": "Self.messageWin"
+													}
+												}
+											],
+											"sid": 237428716619807
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 249572777675744
+												}
+											],
+											"actions": [],
+											"sid": 791667215546004,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "for",
+															"objectClass": "System",
+															"sid": 181355800388913,
+															"parameters": {
+																"name": "\"\"",
+																"start-index": "0",
+																"end-index": "Multiplayer.PeerCount"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 899877213225096,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 459171431844079,
+																	"parameters": {
+																		"first-value": "Multiplayer.PeerIDAt(loopindex)",
+																		"comparison": 0,
+																		"second-value": "GameWinnerID"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-text",
+																	"objectClass": "txtResult",
+																	"sid": 669619400589699,
+																	"parameters": {
+																		"text": "replace(Self.messageLose,\"{alias}\",Multiplayer.PeerAliasAt(loopindex))"
+																	}
+																}
+															],
+															"sid": 405869173343752
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Game finish"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 938981576168099,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"finish\""
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 421892911828118
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 957552766208604,
+							"parameters": {
+								"seconds": "6"
+							}
+						},
+						{
+							"id": "reload",
+							"objectClass": "Browser",
+							"sid": 302855825355563
+						}
+					],
+					"sid": 292621195253699
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 806368593297227,
+							"parameters": {
+								"object": "ObstacleItem"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 127803594942542,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-y",
+									"objectClass": "ObstacleItem",
+									"sid": 211471216134252,
+									"parameters": {
+										"comparison": 2,
+										"y-co-ordinate": "scrolly-LayoutHeight*ObstaclesSpawnMultiplier"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "ObstacleItem",
+									"sid": 617569651557668,
+									"parameters": {
+										"x": "scrollx + ObstacleItem.X",
+										"y": "scrolly + LayoutHeight*ObstaclesSpawnMultiplier"
+									}
+								},
+								{
+									"id": "broadcast-message",
+									"objectClass": "Multiplayer",
+									"sid": 204346795209745,
+									"disabled": true,
+									"parameters": {
+										"from-id": "\"\"",
+										"tag": "\"obstacle-respawn\"",
+										"message": "ObstacleItem.UID&\"|\"&ObstacleItem.X&\"|\"&ObstacleItem.Y",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 645688643021824
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 928620559665221,
+							"parameters": {
+								"object": "NutrientItem"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 522902982775201,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-y",
+									"objectClass": "NutrientItem",
+									"sid": 160802209985517,
+									"parameters": {
+										"comparison": 2,
+										"y-co-ordinate": "scrolly-LayoutHeight*ObstaclesSpawnMultiplier"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "NutrientItem",
+									"sid": 320591508989630,
+									"parameters": {
+										"x": "scrollx + NutrientItem.X",
+										"y": "scrolly + LayoutHeight*ObstaclesSpawnMultiplier"
+									}
+								},
+								{
+									"id": "broadcast-message",
+									"objectClass": "Multiplayer",
+									"sid": 624358985810251,
+									"disabled": true,
+									"parameters": {
+										"from-id": "\"\"",
+										"tag": "\"nutrient-respawn\"",
+										"message": "NutrientItem.UID&\"|\"&NutrientItem.X&\"|\"&NutrientItem.Y",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 537245080648406
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Boost"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "RootHead",
+							"sid": 860822828143109,
+							"parameters": {
+								"object": "NutrientItem"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-max-speed",
+							"objectClass": "RootHead",
+							"sid": 662818536041432,
+							"behaviorType": "Car",
+							"parameters": {
+								"max-speed": "600"
+							}
+						},
+						{
+							"id": "set-steer-speed",
+							"objectClass": "RootHead",
+							"sid": 366349644226233,
+							"behaviorType": "Car",
+							"parameters": {
+								"steer-speed": "200"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 288166333621347,
+							"parameters": {
+								"seconds": "2.5"
+							}
+						},
+						{
+							"id": "set-max-speed",
+							"objectClass": "RootHead",
+							"sid": 492285213013920,
+							"behaviorType": "Car",
+							"parameters": {
+								"max-speed": "300"
+							}
+						},
+						{
+							"id": "set-steer-speed",
+							"objectClass": "RootHead",
+							"sid": 263618356914481,
+							"behaviorType": "Car",
+							"parameters": {
+								"steer-speed": "100"
+							}
+						}
+					],
+					"sid": 750847795212041
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "NutrientItem",
+							"sid": 676134822034347
+						}
+					],
+					"actions": [
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 487450320198666,
+							"parameters": {
+								"object": "NutrientItem",
+								"peer-id": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "NutrientItem",
+							"sid": 215234632924809,
+							"parameters": {
+								"layer": "\"obstacles\""
+							}
+						}
+					],
+					"sid": 488648462028691
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "ObstacleItem",
+							"sid": 998387402992219
+						}
+					],
+					"actions": [
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 505301528637947,
+							"parameters": {
+								"object": "ObstacleItem",
+								"peer-id": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "ObstacleItem",
+							"sid": 753637427518004,
+							"parameters": {
+								"layer": "\"obstacles\""
+							}
+						}
+					],
+					"sid": 478263565790537
+				}
+			],
+			"sid": 985751110145347
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "MultiplayerClient",
+			"description": "",
+			"isActiveOnStart": false,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Update ID on RootHead Creation (Client Side)"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "RootHead",
+							"sid": 731305470533822
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "RootHead",
+							"sid": 591982752503953,
+							"parameters": {
+								"instance-variable": "ID",
+								"value": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "RootHead",
+							"sid": 508028547973097,
+							"behaviorType": "Car",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "RootHead",
+							"sid": 407911452808177,
+							"parameters": {
+								"layer": "\"objects\""
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "RootBody",
+							"sid": 663792657298827,
+							"parameters": {
+								"layer": "\"objects\""
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "RootEyeLeft",
+							"sid": 844366534426580,
+							"parameters": {
+								"layer": "\"objects\""
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "RootEyeRight",
+							"sid": 292031187539722,
+							"parameters": {
+								"layer": "\"objects\""
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "RootIrisLeft",
+							"sid": 832758096845998,
+							"parameters": {
+								"layer": "\"objects\""
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "RootIrisRight",
+							"sid": 919420971385532,
+							"parameters": {
+								"layer": "\"objects\""
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "RootHeadNickname",
+							"sid": 106996519608618,
+							"parameters": {
+								"layer": "\"objects\""
+							}
+						},
+						{
+							"id": "move-to-top",
+							"objectClass": "RootHeadNickname",
+							"sid": 687400022995147
+						},
+						{
+							"id": "set-text",
+							"objectClass": "RootHeadNickname",
+							"sid": 812415831495072,
+							"parameters": {
+								"text": "Multiplayer.PeerAlias"
+							}
+						},
+						{
+							"id": "send-message",
+							"objectClass": "Multiplayer",
+							"sid": 550969239199163,
+							"parameters": {
+								"peer-id": "\"\"",
+								"tag": "\"ready\"",
+								"message": "Multiplayer.PeerID",
+								"mode": "reliable-ordered"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 650862553583963,
+							"parameters": {
+								"variable": "GamePlayerNextPosition",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 703887076224359,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 684332382064311,
+									"parameters": {
+										"variable": "GamePlayerNextPosition",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-default-color",
+									"objectClass": "RootHead",
+									"sid": 485916649908646,
+									"parameters": {
+										"color": "ROOT_COLOR_1"
+									}
+								}
+							],
+							"sid": 883690367919551
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 932877196402512
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 369084446443313,
+									"parameters": {
+										"variable": "GamePlayerNextPosition",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-default-color",
+									"objectClass": "RootHead",
+									"sid": 636232516552196,
+									"parameters": {
+										"color": "ROOT_COLOR_2"
+									}
+								}
+							],
+							"sid": 683995524994599
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 710573672450258
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 134153916535942,
+									"parameters": {
+										"variable": "GamePlayerNextPosition",
+										"comparison": 0,
+										"value": "3"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-default-color",
+									"objectClass": "RootHead",
+									"sid": 873988650004769,
+									"parameters": {
+										"color": "ROOT_COLOR_3"
+									}
+								}
+							],
+							"sid": 840168502616483
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 133551681161086
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 355008659392113,
+									"parameters": {
+										"variable": "GamePlayerNextPosition",
+										"comparison": 0,
+										"value": "4"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-default-color",
+									"objectClass": "RootHead",
+									"sid": 755506842226540,
+									"parameters": {
+										"color": "ROOT_COLOR_4"
+									}
+								}
+							],
+							"sid": 142425423958261
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-default-color",
+									"objectClass": "RootIrisLeft",
+									"sid": 818150167015897,
+									"parameters": {
+										"color": "RootHead.ColorValue"
+									}
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "RootIrisRight",
+									"sid": 843608721823278,
+									"parameters": {
+										"color": "RootHead.ColorValue"
+									}
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "RootBody",
+									"sid": 271214313923603,
+									"parameters": {
+										"color": "RootHead.ColorValue"
+									}
+								}
+							],
+							"sid": 337657483298447
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Game State Preparing"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 906690111962895,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"setup\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 884599811335422,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Listening for state playing"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-peer-message",
+									"objectClass": "Multiplayer",
+									"sid": 556626268244594,
+									"parameters": {
+										"tag": "\"start\""
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 188717528376467,
+									"parameters": {
+										"first-value": "Multiplayer.FromID",
+										"comparison": 0,
+										"second-value": "Multiplayer.HostID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 498823786799786,
+									"parameters": {
+										"variable": "GameState",
+										"value": "\"playing\""
+									}
+								}
+							],
+							"sid": 397314312505669
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Camera follow"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 892213658916086,
+							"parameters": {
+								"object": "RootHead",
+								"expression": "RootHead.ID",
+								"comparison": 0,
+								"value": "Multiplayer.MyID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 175765586426514,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Camera follow root"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "scroll-to-position",
+									"objectClass": "System",
+									"sid": 930831582880088,
+									"parameters": {
+										"x": "lerp(scrollx,RootHead.X,0.06)",
+										"y": "lerp(scrolly,RootHead.Y,0.06)"
+									}
+								}
+							],
+							"sid": 567812707725876
+						},
+						{
+							"eventType": "comment",
+							"text": "Ground update"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-image-offset-x",
+									"objectClass": "tiledGround",
+									"sid": 832994500157938,
+									"parameters": {
+										"offset-x": "-scrollx"
+									}
+								},
+								{
+									"id": "set-image-offset-y",
+									"objectClass": "tiledGround",
+									"sid": 646382966545795,
+									"parameters": {
+										"offset-y": "-scrolly"
+									}
+								}
+							],
+							"sid": 979591961141028
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Game Loop"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 602984714297537,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"playing\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 528901823973663,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Only to current client (root head)"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-comparison",
+									"objectClass": "System",
+									"sid": 905686297179577,
+									"parameters": {
+										"object": "RootHead",
+										"expression": "RootHead.ID",
+										"comparison": 0,
+										"value": "Multiplayer.MyID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 309713554242852,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Player Controller"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-touching-object",
+											"objectClass": "Touch",
+											"sid": 177164773598204,
+											"parameters": {
+												"object": "uiMoveLeft"
+											}
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 956910406466800,
+											"parameters": {
+												"key": 37
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "send-message",
+											"objectClass": "Multiplayer",
+											"sid": 491733214905709,
+											"parameters": {
+												"peer-id": "\"\"",
+												"tag": "\"left\"",
+												"message": "Multiplayer.MyID",
+												"mode": "reliable-unordered"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveLeft",
+											"sid": 993662805675312,
+											"parameters": {
+												"animation": "\"push\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 319351524927817,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 911765959526073
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveLeft",
+											"sid": 265186120182984,
+											"parameters": {
+												"animation": "\"idle\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 171858718785837
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-touching-object",
+											"objectClass": "Touch",
+											"sid": 702254698458301,
+											"parameters": {
+												"object": "uiMoveRight"
+											}
+										},
+										{
+											"id": "key-is-down",
+											"objectClass": "Keyboard",
+											"sid": 597082167434764,
+											"parameters": {
+												"key": 39
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "send-message",
+											"objectClass": "Multiplayer",
+											"sid": 616946777123675,
+											"parameters": {
+												"peer-id": "\"\"",
+												"tag": "\"right\"",
+												"message": "Multiplayer.MyID",
+												"mode": "reliable-unordered"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveRight",
+											"sid": 345197237639621,
+											"parameters": {
+												"animation": "\"push\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 899853336665537,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 279030717862691
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "uiMoveRight",
+											"sid": 733667679689159,
+											"parameters": {
+												"animation": "\"idle\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 296624824196826
+								},
+								{
+									"eventType": "comment",
+									"text": "Update game progress"
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 387163118442225,
+											"parameters": {
+												"variable": "GameProgress",
+												"value": "RootHead.progress"
+											}
+										}
+									],
+									"sid": 569568230441961
+								},
+								{
+									"eventType": "comment",
+									"text": "Update distance"
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 750970899432474,
+											"parameters": {
+												"variable": "rootDistance",
+												"value": "RootHead.distance"
+											}
+										}
+									],
+									"sid": 314232303919916
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Obstacle respawn"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-peer-message",
+									"objectClass": "Multiplayer",
+									"sid": 350189179638540,
+									"parameters": {
+										"tag": "\"obstacle-respawn\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 644124770895380,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ObstacleItem",
+											"sid": 256344587613407,
+											"parameters": {
+												"unique-id": "int(tokenat(Multiplayer.Message,0,\"|\"))"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "ObstacleItem",
+											"sid": 579531804871262,
+											"parameters": {
+												"x": "int(tokenat(Multiplayer.Message, 1,\"|\"))",
+												"y": "int(tokenat(Multiplayer.Message, 2,\"|\"))"
+											}
+										}
+									],
+									"sid": 498707199111232,
+									"disabled": true
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Nutrient respawn"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-peer-message",
+									"objectClass": "Multiplayer",
+									"sid": 302525728859314,
+									"parameters": {
+										"tag": "\"nutrient-respawn\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 991835443248275,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-unique-id",
+											"objectClass": "ObstacleItem",
+											"sid": 366326242704663,
+											"parameters": {
+												"unique-id": "int(tokenat(Multiplayer.Message,0,\"|\"))"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "NutrientItem",
+											"sid": 352718213928749,
+											"parameters": {
+												"x": "int(tokenat(Multiplayer.Message, 1,\"|\"))",
+												"y": "int(tokenat(Multiplayer.Message, 2,\"|\"))"
+											}
+										}
+									],
+									"sid": 250117087317013,
+									"disabled": true
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Timeout"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-peer-message",
+									"objectClass": "Multiplayer",
+									"sid": 949262585143107,
+									"parameters": {
+										"tag": "\"timeout\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 176407664477035,
+									"parameters": {
+										"variable": "GameState",
+										"value": "\"timeout\""
+									}
+								},
+								{
+									"id": "restart-fade",
+									"objectClass": "uiMoveLeft",
+									"sid": 885401759945047,
+									"behaviorType": "Fade"
+								},
+								{
+									"id": "restart-fade",
+									"objectClass": "uiMoveRight",
+									"sid": 407448968052870,
+									"behaviorType": "Fade"
+								}
+							],
+							"sid": 797720755013137
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Root body repeater"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 776545154136246,
+							"parameters": {
+								"tag": "\"root-body-repeater\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 335337536137894,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-comparison",
+									"objectClass": "System",
+									"sid": 725399702906125,
+									"parameters": {
+										"object": "RootHead",
+										"expression": "RootHead.ID",
+										"comparison": 0,
+										"value": "Multiplayer.Message"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 717030404859748,
+									"parameters": {
+										"object-to-create": "RootBodyRepeater",
+										"layer": "\"objects\"",
+										"x": "RootBody.X",
+										"y": "RootBody.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-default-color",
+									"objectClass": "RootBodyRepeater",
+									"sid": 130812297284725,
+									"parameters": {
+										"color": "RootHead.ColorValue"
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "RootBodyRepeater",
+									"sid": 517352511115535,
+									"parameters": {
+										"angle": "RootBody.Angle"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "RootBodyRepeater",
+									"sid": 159360778148373
+								}
+							],
+							"sid": 377924169803084,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 131893586082537,
+											"parameters": {
+												"variable": "GameState",
+												"comparison": 0,
+												"value": "\"timeout\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-wait-time",
+											"objectClass": "RootBodyRepeater",
+											"sid": 182073975771944,
+											"behaviorType": "Fade",
+											"parameters": {
+												"wait-time": "9999"
+											}
+										},
+										{
+											"id": "restart-fade",
+											"objectClass": "RootBodyRepeater",
+											"sid": 307131404465688,
+											"behaviorType": "Fade"
+										}
+									],
+									"sid": 516264799635504
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Game timeout"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 523044458634054,
+							"parameters": {
+								"tag": "\"finish\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 216633789588870,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 796111343722685,
+									"parameters": {
+										"first-value": "Multiplayer.MyID",
+										"comparison": 0,
+										"second-value": "Multiplayer.Message"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "txtResult",
+									"sid": 997048574133815,
+									"parameters": {
+										"text": "Self.messageWin"
+									}
+								}
+							],
+							"sid": 698799840477807
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 378158161379832
+								}
+							],
+							"actions": [],
+							"sid": 784016214326739,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 723797233593759,
+											"parameters": {
+												"name": "\"\"",
+												"start-index": "0",
+												"end-index": "Multiplayer.PeerCount"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 907470176527768,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 342207076344811,
+													"parameters": {
+														"first-value": "Multiplayer.PeerIDAt(loopindex)",
+														"comparison": 0,
+														"second-value": "Multiplayer.Message"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "txtResult",
+													"sid": 971971942573654,
+													"parameters": {
+														"text": "replace(Self.messageLose,\"{alias}\",Multiplayer.PeerAliasAt(loopindex))"
+													}
+												}
+											],
+											"sid": 870986019860141
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-layer-opacity",
+									"objectClass": "System",
+									"sid": 167852000268784,
+									"parameters": {
+										"layer": "\"overlay\"",
+										"opacity": "70"
+									}
+								},
+								{
+									"id": "set-layer-opacity",
+									"objectClass": "System",
+									"sid": 337436424874637,
+									"parameters": {
+										"layer": "\"result\"",
+										"opacity": "100"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 462365954414975,
+									"parameters": {
+										"seconds": "6"
+									}
+								},
+								{
+									"id": "reload",
+									"objectClass": "Browser",
+									"sid": 431772915629803
+								}
+							],
+							"sid": 601424832102788
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "NutrientItem",
+							"sid": 433547879587469
+						}
+					],
+					"actions": [
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 143742444467000,
+							"parameters": {
+								"object": "NutrientItem",
+								"peer-id": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "NutrientItem",
+							"sid": 450014433250388,
+							"parameters": {
+								"layer": "\"obstacles\""
+							}
+						}
+					],
+					"sid": 344051450869083
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "ObstacleItem",
+							"sid": 845932277440183
+						}
+					],
+					"actions": [
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 257642987557562,
+							"parameters": {
+								"object": "ObstacleItem",
+								"peer-id": "Multiplayer.PeerID"
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "ObstacleItem",
+							"sid": 444360574616478,
+							"parameters": {
+								"layer": "\"obstacles\""
+							}
+						}
+					],
+					"sid": 639621568365910
+				}
+			],
+			"sid": 624614729579929
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "MultiplayerUtils",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "MultiplayerConnect",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "nickname",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 677553014237769
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 581610303966018,
+							"parameters": {
+								"variable": "PlayerNickname",
+								"value": "nickname"
+							}
+						},
+						{
+							"callFunction": "StorageSaveNickname",
+							"sid": 965696126805714,
+							"parameters": [
+								"nickname"
+							]
+						},
+						{
+							"id": "connect",
+							"objectClass": "Multiplayer",
+							"sid": 818216056939509,
+							"parameters": {
+								"server": "\"wss://multiplayer.scirra.com\""
+							}
+						}
+					],
+					"sid": 760651181834257
+				},
+				{
+					"functionName": "MultiplayerJoinLobby",
+					"functionDescription": "Connect the player to the game lobby using an nickname",
+					"functionCategory": "Multiplayer",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "nickname",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 627149972963331
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 315055602840901
+				},
+				{
+					"functionName": "MultiplayerMatchMaking",
+					"functionDescription": "Join to the first available room and wait for full",
+					"functionCategory": "Multiplayer",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 662743336792646,
+							"parameters": {
+								"variable": "lobbyState",
+								"value": "\"matchmaking\""
+							}
+						},
+						{
+							"id": "auto-join-room",
+							"objectClass": "Multiplayer",
+							"sid": 798898896958458,
+							"parameters": {
+								"game": "MultiplayerName",
+								"instance": "MultiplayerInstanceName",
+								"first-room": "MultiplayerRoomName",
+								"max-peers": "MultiplayerMaxPeers",
+								"locking": "lock-when-full"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "machmakingStatus",
+							"sid": 855996655646684,
+							"parameters": {
+								"text": "Self.messageSearching"
+							}
+						}
+					],
+					"sid": 134018058305586
+				},
+				{
+					"functionName": "MultiplayerGetWinner",
+					"functionDescription": "",
+					"functionCategory": "Multiplayer",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 715217651866515,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 219326758424734,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "Multiplayer.PeerCount-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 486748845237079,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 688545261009121,
+											"parameters": {
+												"object": "RootHead",
+												"expression": "RootHead.ID",
+												"comparison": 0,
+												"value": "Multiplayer.PeerIDAt(loopindex)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 453378531012040,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "RootHead",
+													"sid": 975546156034659,
+													"parameters": {
+														"instance-variable": "distance",
+														"comparison": 4,
+														"value": "GameWinnerMaxDistance"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 285574165079653,
+													"parameters": {
+														"variable": "GameWinnerID",
+														"value": "RootHead.ID"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 976561278972603,
+													"parameters": {
+														"variable": "GameWinnerMaxDistance",
+														"value": "RootHead.distance"
+													}
+												}
+											],
+											"sid": 307341591857382
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 219442780710662
+		}
+	],
+	"sid": 217806544845443
+}

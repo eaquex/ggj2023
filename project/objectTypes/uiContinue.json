@@ -1,0 +1,60 @@
+{
+	"name": "uiContinue",
+	"plugin-id": "Sprite",
+	"sid": 267887631359851,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 153,
+						"height": 173,
+						"originX": 0.5032679738562091,
+						"originY": 0.5028901734104047,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2899186,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 970805238128415,
+				"name": "idle",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 153,
+						"height": 162,
+						"originX": 0.5032679738562091,
+						"originY": 0.46296296296296297,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9879718,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 686303763919241,
+				"name": "push",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

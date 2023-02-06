@@ -1,0 +1,78 @@
+{
+	"name": "uiMoveRight",
+	"plugin-id": "Sprite",
+	"sid": 436525064839841,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 663151538734139
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 150,
+						"height": 170,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9959736,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 841119205221272,
+				"name": "idle",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 152,
+						"height": 159,
+						"originX": 0.5,
+						"originY": 0.4528301886792453,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 148591,
+						"collisionPoly": {
+							"points": [
+								0.006578947368421052,
+								0,
+								0.993421052631579,
+								0,
+								0.993421052631579,
+								1,
+								0.006578947368421052,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 108574417392771,
+				"name": "push",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

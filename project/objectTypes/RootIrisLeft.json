@@ -1,0 +1,48 @@
+{
+	"name": "RootIrisLeft",
+	"plugin-id": "Sprite",
+	"sid": 909545067475560,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Orbit",
+			"name": "Orbit",
+			"sid": 677415896386549
+		},
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 331306511583222
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 15,
+						"height": 15,
+						"originX": 0.5333333333333333,
+						"originY": 0.6,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2224697,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 467294481355680,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

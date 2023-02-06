@@ -1,0 +1,527 @@
+{
+	"name": "evTransitions",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "transitionPlaying",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "Flag to know if transition it's playing",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 319959517481957
+		},
+		{
+			"eventType": "variable",
+			"name": "transitionTime",
+			"type": "number",
+			"initialValue": "0.5",
+			"comment": "Setting for transition time length",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 617165441458251
+		},
+		{
+			"eventType": "comment",
+			"text": "Input Transition"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "AnimController",
+					"sid": 396592533009995,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-input\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-opacity",
+					"objectClass": "System",
+					"sid": 305244295061346,
+					"parameters": {
+						"layer": "\"input\"",
+						"opacity": "AnimController.Tween.Value(\"transition-input\")"
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "nicknameInput",
+					"sid": 940219837751078,
+					"parameters": {
+						"property-name": "\"opacity\"",
+						"value": "str(AnimController.Tween.Value(\"transition-input\")/100)"
+					}
+				}
+			],
+			"sid": 809043490337976
+		},
+		{
+			"eventType": "comment",
+			"text": "Cover Transition"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "AnimController",
+					"sid": 446945589212030,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-cover\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-opacity",
+					"objectClass": "System",
+					"sid": 338299646905114,
+					"parameters": {
+						"layer": "\"cover\"",
+						"opacity": "AnimController.Tween.Value(\"transition-cover\")"
+					}
+				}
+			],
+			"sid": 863192399543471
+		},
+		{
+			"eventType": "comment",
+			"text": "Matchmaking Transition"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "AnimController",
+					"sid": 405767274347101,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-mm\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-opacity",
+					"objectClass": "uiPlay",
+					"sid": 796909369712743,
+					"parameters": {
+						"opacity": "100-AnimController.Tween.Value(\"transition-mm\")"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "machmakingStatus",
+					"sid": 619374591443473,
+					"parameters": {
+						"opacity": "AnimController.Tween.Value(\"transition-mm\")"
+					}
+				}
+			],
+			"sid": 239621678471654
+		},
+		{
+			"eventType": "comment",
+			"text": "Lobby Transition"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-playing",
+					"objectClass": "AnimController",
+					"sid": 385702552082830,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-lobby\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-opacity",
+					"objectClass": "System",
+					"sid": 124923647401271,
+					"parameters": {
+						"layer": "\"cover\"",
+						"opacity": "AnimController.Tween.Value(\"transition-lobby\")"
+					}
+				},
+				{
+					"id": "set-layer-opacity",
+					"objectClass": "System",
+					"sid": 321619333997408,
+					"parameters": {
+						"layer": "\"bg\"",
+						"opacity": "AnimController.Tween.Value(\"transition-lobby\")"
+					}
+				}
+			],
+			"sid": 147013275011281
+		},
+		{
+			"eventType": "comment",
+			"text": "Flag to determine if transition is doing or not"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-any-playing",
+					"objectClass": "AnimController",
+					"sid": 445903761909592,
+					"behaviorType": "Tween"
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 524035928744407,
+					"parameters": {
+						"variable": "transitionPlaying",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 310394043399414
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 111932684695814
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 706204943545695,
+					"parameters": {
+						"variable": "transitionPlaying",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 101949673375514
+		},
+		{
+			"eventType": "comment",
+			"text": "Transition for Input Layer"
+		},
+		{
+			"functionName": "TransitionInputIN",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 303732149356198,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-input\"",
+						"start-value": "0",
+						"end-value": "100",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 460206303466916
+		},
+		{
+			"functionName": "TransitionInputOUT",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 122848983602295,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-input\"",
+						"start-value": "100",
+						"end-value": "0",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 330116010016629
+		},
+		{
+			"eventType": "comment",
+			"text": "Transitions for Cover"
+		},
+		{
+			"functionName": "TransitionCoverIN",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 770120878697013,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-cover\"",
+						"start-value": "0",
+						"end-value": "100",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 427652463481702
+		},
+		{
+			"functionName": "TransitionCoverOUT",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 834431124736734,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-cover\"",
+						"start-value": "100",
+						"end-value": "0",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 844212813714113
+		},
+		{
+			"eventType": "comment",
+			"text": "Transition for Matchmaking"
+		},
+		{
+			"functionName": "TransitionMatchMakingIN",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 663234230093948,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-mm\"",
+						"start-value": "0",
+						"end-value": "100",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "machmakingStatus",
+					"sid": 693856861808486,
+					"parameters": {
+						"text": "Self.messageConnecting"
+					}
+				}
+			],
+			"sid": 579086564467699
+		},
+		{
+			"functionName": "TransitionMatchMakingOUT",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "disconected",
+					"type": "boolean",
+					"initialValue": "false",
+					"comment": "",
+					"sid": 117743161305666
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 107029512901672,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-mm\"",
+						"start-value": "100",
+						"end-value": "0",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 798540273525752,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 881101483410778,
+							"parameters": {
+								"variable": "disconected"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 843091445183790,
+							"parameters": {
+								"variable": "lobbyState",
+								"value": "\"ready\""
+							}
+						}
+					],
+					"sid": 922270881581126
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Transition for Lobby"
+		},
+		{
+			"functionName": "TransitionLobbyIN",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 740957410865128,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-lobby\"",
+						"start-value": "0",
+						"end-value": "100",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 916835777881122
+		},
+		{
+			"functionName": "TransitionLobbyOUT",
+			"functionDescription": "",
+			"functionCategory": "Transitions",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "tween-value",
+					"objectClass": "AnimController",
+					"sid": 453332855080666,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"transition-lobby\"",
+						"start-value": "100",
+						"end-value": "0",
+						"time": "transitionTime",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 361820156806765
+		}
+	],
+	"sid": 993473458650878
+}

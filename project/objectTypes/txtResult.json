@@ -1,0 +1,24 @@
+{
+	"name": "txtResult",
+	"plugin-id": "Text",
+	"sid": 413173156922952,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "messageWin",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 604803039164351
+		},
+		{
+			"name": "messageLose",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 271534169073344
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

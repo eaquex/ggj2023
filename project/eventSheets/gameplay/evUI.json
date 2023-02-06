@@ -1,0 +1,179 @@
+{
+	"name": "evUI",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 426051759738638
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "uiTopProgress",
+					"sid": 397553144568043,
+					"parameters": {
+						"instance-variable": "maxWidth",
+						"value": "Self.Width"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "uiTopProgress",
+					"sid": 670961735147404,
+					"parameters": {
+						"instance-variable": "progress",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 319686897063923
+		},
+		{
+			"eventType": "comment",
+			"text": "Car Simulation"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 818794063455234
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 785018330416857,
+					"parameters": {
+						"variable": "GameState",
+						"comparison": 0,
+						"value": "\"playing\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 155127236761707,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Update with current game progress"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "uiTopProgress",
+							"sid": 533490090690512,
+							"parameters": {
+								"instance-variable": "progress",
+								"value": "GameProgress"
+							}
+						}
+					],
+					"sid": 654495093013500
+				},
+				{
+					"eventType": "comment",
+					"text": "Limit Angle"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "RootHead",
+							"sid": 738339380708570,
+							"parameters": {
+								"angle": "clamp(Self.Angle,10,170)"
+							}
+						}
+					],
+					"sid": 679077335570630
+				},
+				{
+					"eventType": "comment",
+					"text": "Update progress"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "uiTopProgress",
+							"sid": 582611641084541,
+							"parameters": {
+								"instance-variable": "progress",
+								"comparison": 2,
+								"value": "100"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "uiTopProgress",
+							"sid": 937342132074538,
+							"parameters": {
+								"width": "Self.maxWidth*(Self.progress/100)"
+							}
+						}
+					],
+					"sid": 449193950282694
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 968703882998790
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 980837387208155
+						}
+					],
+					"actions": [
+						{
+							"id": "set-width",
+							"objectClass": "uiTopProgress",
+							"sid": 987960954499819,
+							"parameters": {
+								"width": "Self.maxWidth"
+							}
+						}
+					],
+					"sid": 461702558175126
+				},
+				{
+					"eventType": "comment",
+					"text": "Update root distance"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "txDistance",
+							"sid": 644133168385408,
+							"parameters": {
+								"text": "zeropad((round(rootDistance*100)/100),3) & \"m\""
+							}
+						}
+					],
+					"sid": 348790375593620
+				}
+			]
+		}
+	],
+	"sid": 449407551879146
+}

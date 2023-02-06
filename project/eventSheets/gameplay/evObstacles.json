@@ -1,0 +1,28 @@
+{
+	"name": "evObstacles",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "ObstaclesSpawnMultiplier",
+			"type": "number",
+			"initialValue": "7",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 503627536836092
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 748192396129770
+				}
+			],
+			"actions": [],
+			"sid": 835021065798540
+		}
+	],
+	"sid": 881352471890175
+}

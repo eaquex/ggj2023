@@ -1,0 +1,406 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 32702,
+	"name": "Roots Race",
+	"runtime": "c3",
+	"useWorker": "auto",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Browser",
+			"name": "Browser",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Date",
+			"name": "Date",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "DrawingCanvas",
+			"name": "Drawing canvas",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Function",
+			"name": "Function",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "LocalStorage",
+			"name": "Local storage",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Multiplayer",
+			"name": "Multiplayer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TextBox",
+			"name": "Text input",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Car",
+			"name": "Car",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Orbit",
+			"name": "Orbit",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pin",
+			"name": "Pin",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"bundled": false
+		}
+	],
+	"uniqueId": "177p9uutw2bvo",
+	"objectTypes": {
+		"items": [
+			"Keyboard",
+			"Audio",
+			"Mouse",
+			"Function",
+			"Multiplayer",
+			"Browser",
+			"tiledGround",
+			"RootHead",
+			"RootEyeLeft",
+			"RootIrisLeft",
+			"RootEyeRight",
+			"RootIrisRight",
+			"RootBody",
+			"uiMoveLeft",
+			"Touch",
+			"uiMoveRight",
+			"uiTop",
+			"uiTopProgress",
+			"txDistance",
+			"uiBottom",
+			"ObstacleItem",
+			"NutrientItem",
+			"DrawingCanvas",
+			"RootBodyRepeater",
+			"Labels",
+			"nicknameInput",
+			"uiContinue",
+			"AnimController",
+			"LocalStorage",
+			"Date",
+			"CoverImage",
+			"nicknameCover",
+			"uiPlay",
+			"machmakingStatus",
+			"Debug",
+			"RootHeadNickname",
+			"txtResult"
+		],
+		"subfolders": []
+	},
+	"autosaveData": null,
+	"containers": [
+		{
+			"members": [
+				"RootBody",
+				"RootEyeLeft",
+				"RootEyeRight",
+				"RootHead",
+				"RootHeadNickname",
+				"RootIrisLeft",
+				"RootIrisRight"
+			],
+			"selectMode": "normal"
+		}
+	],
+	"families": {
+		"items": [],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"lobby",
+			"game",
+			"objects"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"evGame",
+			"evLobby",
+			"evStorage",
+			"evTransitions",
+			"evMultiplayer"
+		],
+		"subfolders": [
+			{
+				"items": [
+					"evRootController",
+					"evUI",
+					"evObstacles",
+					"evNutrient",
+					"evRootBodyRepeater",
+					"evAnimController"
+				],
+				"subfolders": [],
+				"name": "gameplay"
+			}
+		]
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [],
+			"subfolders": []
+		},
+		"sound": {
+			"items": [
+				{
+					"name": "Abstract_Positive_Game_WIn_3.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 961530064845170,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Futuristic_Game_Item_5.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 854454850696995,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"music": {
+			"items": [
+				{
+					"name": "Can't Stop Me.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 921286001969094,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [
+				{
+					"name": "Gobold Bold.otf",
+					"type": "application/font-sfnt",
+					"sid": 265694535378878,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "icon-128.png",
+					"type": "image/png",
+					"sid": 831682547546924,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 759050113244449,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [
+				{
+					"name": "custom.css",
+					"type": "text/css",
+					"sid": 607916935925902,
+					"file-info": {
+						"purpose": "stylesheet"
+					}
+				}
+			],
+			"subfolders": []
+		}
+	},
+	"timelines": {
+		"items": [],
+		"subfolders": [
+			{
+				"items": [],
+				"subfolders": []
+			}
+		]
+	},
+	"properties": {
+		"description": "In this skill and racing game, the player controls a root in a competition with other roots. The player must use his skill to dodge obstacles and collect nutrients while traveling the longest distance.",
+		"version": "1.0.0.0",
+		"author": "Edgar Quex",
+		"authorEmail": "eaquex@krystalstudio.com",
+		"authorWebsite": "https://krystalstudio.com",
+		"appId": "com.krystalstudio.rootsrace",
+		"pixelRounding": true,
+		"zAxisScale": "normalized",
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": false,
+		"fullscreenMode": "letterbox-scale",
+		"fullscreenQuality": "high",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			0,
+			0,
+			0,
+			0
+		],
+		"splashColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"orientations": "any",
+		"webgpu": "auto",
+		"gpuPreference": "high-performance",
+		"scriptsType": "module",
+		"framerateMode": "vsync",
+		"compositingMode": "standard",
+		"sampling": "trilinear",
+		"downscaling": "high",
+		"renderingMode": "auto",
+		"anisotropicFiltering": "auto",
+		"zNear": 1,
+		"zFar": 10000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "progress-logo",
+		"preloadSounds": true,
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"autoReloadScriptsOnPreview": false,
+		"exportFileStructure": "flat"
+	},
+	"viewportWidth": 720,
+	"viewportHeight": 1280,
+	"firstLayout": "lobby"
+}
